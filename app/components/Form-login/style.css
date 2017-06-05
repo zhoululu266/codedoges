@@ -1,0 +1,21 @@
+.login-form {
+  width: 300px;
+  margin: 80px auto 50px;
+  padding: 10px;
+}
+
+.login-avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.login-avatar img {
+  height: 100%;
+  width: 100%;
+  display: block;
+}

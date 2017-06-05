@@ -1,0 +1,19 @@
+.login-container {
+  width: 300px;
+  border-radius: 8px;
+  margin: 50px auto;
+  padding: 10px;
+}
+
+.login-avatar-box {
+  height: 60px;
+  width: 60px;
+  margin: 0 auto 50px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.login-avatar-box img {
+  height: 100%;
+  width: 100%;
+}

@@ -1,1 +1,2 @@
+# 去掉发布非必需的node package包，缩小上传体积
 node_modules

@@ -1,0 +1,19 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  user-select: none;
+}
+
+.logo {
+  user-select: initial;
+  color: #fff;
+}
+
+.login {
+  padding: 50px;
+  width: 500px;
+  margin: 200px auto;
+}
