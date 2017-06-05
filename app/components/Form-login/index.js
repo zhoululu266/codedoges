@@ -15,7 +15,6 @@ class FormLogin extends React.Component {
 		this.handleLogin = this.handleLogin.bind( this )
 	}
 	componentDidMount( ) {
-		console.log( this.props )
 		const avatar = this.refs.avatar
 		if ( avatar ) {
 			avatar.onload = e => {
@@ -35,7 +34,7 @@ class FormLogin extends React.Component {
 	}
 	handleLogin( ) {
 		let data = JSON.stringify({ username: this.state.username, password: this.state.password })
-		fetch('/api/login', {
+		fetch('/api/signin', {
 			method: 'post',
 			headers: {
 				'Content-type': 'application/json'
@@ -45,7 +44,8 @@ class FormLogin extends React.Component {
 			return res.json( )
 		}).then(data => {
 			if ( data.status === 1 ) {
-				this.props.actions.login({ username: this.state.username, password: this.state.password })
+				this.props.actions.login({ username: data.data.username, password: data.data.password, uuid: data.data._id })
+				console.log( this.props )
 			} else {
 				alert( data.msg )
 			}

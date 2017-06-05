@@ -2,7 +2,8 @@ import * as actionTypes from '../constants/userinfo'
 
 const initialState = {
 	username: '账号',
-	password: '密码'
+	password: '密码',
+	uuid: ''
 }
 
 export default function userinfo( state = initialState, action ) {
