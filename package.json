@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "webpack-dev-server --progress --config configs/dev.babel.js",
     "dev:serve": "cross-env NODE_PORT=8080 nodemon server",
-    "build": "rm dist/app.js && cross-env NODE_ENV=production webpack --progress --config configs/prod.babel.js",
+    "build": "webpack --progress --config configs/prod.babel.js",
     "serve:start": "yarn build && pm2 start server",
     "serve:stop": "pm2 stop server && rm dist/app.js"
   },
