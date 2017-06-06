@@ -1,0 +1,1 @@
+export const MOVIELIST_FETCH = 'MOVIELIST_FETCH'

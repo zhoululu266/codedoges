@@ -6,7 +6,11 @@ exports.login = (username, password) => {
 			if (err) {
 				reject(err)
 			} else {
-				resolve(doc)
+				if (doc) {
+					resolve(doc)
+				} else {
+					reject('登陆失败')
+				}
 			}
 		})
 	})
@@ -18,8 +22,13 @@ exports.signin = (username, password) => {
 			if (doc) {
 				reject('用户已存在')
 			} else {
-				UserModel.save({username: username, password: password}).then((doc, err) => {
-					resolve(doc)
+				let newUser = new UserModel({username: username, password: password})
+				newUser.save({username: username, password: password}).then((doc, err) => {
+					if (err) {
+						reject(err)
+					} else {
+						resolve(doc)
+					}
 				})
 			}
 		})

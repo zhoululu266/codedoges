@@ -1,39 +1,72 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
-import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
+import CircularProgress from 'material-ui/CircularProgress'
+import createHashHistory from 'history/createHashHistory'
 import './style.css'
+import '../main.css'
+
+const history = createHashHistory()
 
 class FormLogin extends React.Component {
-	constructor( props ) {
-		super( props )
+	constructor(props) {
+		super(props)
 		this.state = {
 			avatar: '',
 			username: '',
-			password: ''
+			password: '',
+			loginButton: '登陆'
 		}
-		this.handleChange = this.handleChange.bind( this )
-		this.handleLogin = this.handleLogin.bind( this )
+		this.handleChange = this.handleChange.bind(this)
+		this.handlelogin = this.handlelogin.bind(this)
+		this.handlesignin = this.handlesignin.bind(this)
 	}
-	componentDidMount( ) {
+	componentDidMount() {
 		const avatar = this.refs.avatar
-		if ( avatar ) {
+		if (avatar) {
 			avatar.onload = e => {
-				console.log( e )
+				console.log(e)
 			}
 			avatar.onerror = e => {
-				console.log( e )
+				console.log(e)
 			}
 		}
 	}
-	handleChange( e ) {
-		if ( e.target.type == 'text' ) {
-			this.setState({ username: e.target.value })
-		} else if ( e.target.type == 'password' ) {
-			this.setState({ password: e.target.value })
+	handleChange(e) {
+		if (e.target.type == 'text') {
+			this.setState({username: e.target.value})
+		} else if (e.target.type == 'password') {
+			this.setState({password: e.target.value})
 		}
 	}
-	handleLogin( ) {
-		let data = JSON.stringify({ username: this.state.username, password: this.state.password })
+	handlelogin() {
+		let loginButton = <CircularProgress size={36}></CircularProgress>
+		this.setState({loginButton: loginButton})
+		let data = JSON.stringify({username: this.state.username, password: this.state.password})
+		fetch('/api/login', {
+			method: 'post',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			body: data
+		}).then(res => {
+			return res.json()
+		}).then(data => {
+			if (data.status === 1) {
+				this.props.actions.login({username: data.data.username, password: data.data.password, uuid: data.data._id, avatar: data.data.avatar})
+				this.setState({avatar: data.data.avatar})
+				this.refs.avatarBox.style.opacity = 1
+				this.setState({loginButton: '登陆'})
+				history.push('/home')
+			} else {
+				alert(data.msg)
+			}
+		}).catch(err => {
+			console.log(err)
+		});
+	}
+	handlesignin() {
+		let data = JSON.stringify({username: this.state.username, password: this.state.password})
 		fetch('/api/signin', {
 			method: 'post',
 			headers: {
@@ -41,19 +74,20 @@ class FormLogin extends React.Component {
 			},
 			body: data
 		}).then(res => {
-			return res.json( )
+			return res.json()
 		}).then(data => {
-			if ( data.status === 1 ) {
-				this.props.actions.login({ username: data.data.username, password: data.data.password, uuid: data.data._id })
-				console.log( this.props )
+			if (data.status === 1) {
+				this.props.actions.login({username: data.data.username, password: data.data.password, uuid: data.data._id})
+				console.log(this.props)
 			} else {
-				alert( data.msg )
+				console.log(data)
+				alert(data.msg)
 			}
 		}).catch(err => {
-			console.log( err )
+			console.log(err)
 		});
 	}
-	render( ) {
+	render() {
 		return (
 			<div className="login-form">
 				<div className="login-avatar" ref='avatarBox'>
@@ -63,9 +97,17 @@ class FormLogin extends React.Component {
 				</div>
 				<TextField hintText='请输入用户名' fullWidth={true} onChange={this.handleChange}></TextField>
 				<TextField hintText='请输入密码' type='password' fullWidth={true} onChange={this.handleChange}></TextField>
-				<FlatButton label="点击登陆" fullWidth={true} primary={true} style={{
+				<div className='clearfixed' style={{
 					marginTop: '50px'
-				}} onClick={this.handleLogin}/>
+				}}>
+					<RaisedButton label={this.state.loginButton} style={{
+						float: 'left',
+						lineHeight: 0
+					}} onClick={this.handlelogin}/>
+					<RaisedButton label="注册" secondary={true} style={{
+						float: 'right'
+					}} onClick={this.handlesignin}/>
+				</div>
 				<div style={{
 					color: '#9e9e9e',
 					lineHeight: 1.5,
