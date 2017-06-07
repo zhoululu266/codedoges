@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import CircularProgress from 'material-ui/CircularProgress'
 import createHashHistory from 'history/createHashHistory'
+import axios from 'axios'
 import './style.css'
 import '../main.css'
 
@@ -42,16 +43,15 @@ class FormLogin extends React.Component {
 	handlelogin() {
 		let loginButton = <CircularProgress size={36}></CircularProgress>
 		this.setState({loginButton: loginButton})
-		let data = JSON.stringify({username: this.state.username, password: this.state.password})
-		fetch('/api/login', {
+		axios({
+			url: '/api/login',
 			method: 'post',
-			headers: {
-				'Content-type': 'application/json'
-			},
-			body: data
+			data: {
+				username: this.state.username,
+				password: this.state.password
+			}
 		}).then(res => {
-			return res.json()
-		}).then(data => {
+			let data = res.data
 			if (data.status === 1) {
 				this.props.actions.login({username: data.data.username, password: data.data.password, uuid: data.data._id, avatar: data.data.avatar})
 				this.setState({avatar: data.data.avatar})
@@ -64,28 +64,66 @@ class FormLogin extends React.Component {
 		}).catch(err => {
 			console.log(err)
 		});
+		// let data = JSON.stringify({username: this.state.username, password: this.state.password})
+		// fetch('/api/login', {
+		// 	method: 'post',
+		// 	headers: {
+		// 		'Content-type': 'application/json'
+		// 	},
+		// 	body: data
+		// }).then(res => {
+		// 	return res.json()
+		// }).then(data => {
+		// 	if (data.status === 1) {
+		// 		this.props.actions.login({username: data.data.username, password: data.data.password, uuid: data.data._id, avatar: data.data.avatar})
+		// 		this.setState({avatar: data.data.avatar})
+		// 		this.refs.avatarBox.style.opacity = 1
+		// 		this.setState({loginButton: '登陆'})
+		// 		history.push('/home')
+		// 	} else {
+		// 		alert(data.msg)
+		// 	}
+		// }).catch(err => {
+		// 	console.log(err)
+		// });
 	}
 	handlesignin() {
-		let data = JSON.stringify({username: this.state.username, password: this.state.password})
-		fetch('/api/signin', {
+		axios({
+			url: '/api/signin',
 			method: 'post',
-			headers: {
-				'Content-type': 'application/json'
-			},
-			body: data
+			data: {
+				username: this.state.username,
+				password: this.state.password
+			}
 		}).then(res => {
-			return res.json()
-		}).then(data => {
+			let data = res.data
 			if (data.status === 1) {
-				this.props.actions.login({username: data.data.username, password: data.data.password, uuid: data.data._id})
-				console.log(this.props)
+				alert(data.msg)
 			} else {
-				console.log(data)
 				alert(data.msg)
 			}
 		}).catch(err => {
 			console.log(err)
 		});
+		// let data = JSON.stringify({username: this.state.username, password: this.state.password})
+		// fetch('/api/signin', {
+		// 	method: 'post',
+		// 	headers: {
+		// 		'Content-type': 'application/json'
+		// 	},
+		// 	body: data
+		// }).then(res => {
+		// 	return res.json()
+		// }).then(data => {
+		// 	if (data.status === 1) {
+		// 		console.log(this.props)
+		// 	} else {
+		// 		console.log(data)
+		// 		alert(data.msg)
+		// 	}
+		// }).catch(err => {
+		// 	console.log(err)
+		// });
 	}
 	render() {
 		return (

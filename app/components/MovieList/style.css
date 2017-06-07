@@ -1,6 +1,6 @@
 .movie-wrapper {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 20px;
   padding-bottom: 50px;
 }
@@ -10,4 +10,15 @@
   top: 50%;
   left: 50%;
   margin: -40px 0 0 -40px;
+}
+
+.movie-container {
+  width: 260px;
+  float: left;
+  margin: 20px
+}
+
+.movie-likebtn {
+  float: right;
+  margin-right: 0 !important;
 }

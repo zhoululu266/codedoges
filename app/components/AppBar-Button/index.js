@@ -10,7 +10,7 @@ class AppBarBtn extends Component {
 		super(props)
 	}
 	goGithub() {
-		location.href = 'https://github.com/galaxycubic'
+		window.open('https://github.com/galaxycubic')
 	}
 	render() {
 		return (
