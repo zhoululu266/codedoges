@@ -1,5 +1,11 @@
 const UserModel = require('../models/user')
 
+/**
+ * 用户登陆
+ * @method login
+ * @param  {[Object]}  ctx [context]
+ * @return null
+ */
 exports.login = async ctx => {
 	let username = ctx.request.body.username
 	let password = ctx.request.body.password
@@ -19,7 +25,13 @@ exports.login = async ctx => {
 	}
 }
 
-exports.signin = async(ctx) => {
+/**
+ * 用户注册
+ * @method signin
+ * @param  {[Object]}  ctx [context]
+ * @return null
+ */
+exports.signin = async ctx => {
 	let username = ctx.request.body.username
 	let password = ctx.request.body.password
 	try {

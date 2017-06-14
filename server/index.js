@@ -3,7 +3,7 @@ const path = require('path'),
 	app = new koa(),
 	routes = require('./routes'),
 	mongoose = require('mongoose'),
-	server = require('koa-static')
+	server = require('koa-static'),
 	NODE_PORT = parseInt(process.env.NODE_PORT)
 mongoose.connect('mongodb://localhost:27017/codedoges')
 mongoose.Promise = global.Promise

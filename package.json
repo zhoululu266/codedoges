@@ -28,6 +28,8 @@
     "kcors": "^2.2.1",
     "koa": "^2.2.0",
     "koa-body": "^2.0.1",
+    "koa-logger": "^3.0.0",
+    "koa-multer": "^1.0.1",
     "koa-router": "^7.2.0",
     "koa-static": "^3.0.0",
     "mongoose": "^4.9.9",
