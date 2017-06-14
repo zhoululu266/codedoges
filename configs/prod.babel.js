@@ -27,7 +27,12 @@ export default {
 	},
 	resolve : {
 		extensions: [
-			'.js', '.css', '.less', '.json'
+			'.js',
+			'.css',
+			'.less',
+			'.json',
+			'.sass',
+			'.scss'
 		],
 		alias: {
 			'@': 'src'

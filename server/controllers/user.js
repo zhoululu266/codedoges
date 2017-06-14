@@ -1,36 +1,42 @@
 const UserModel = require('../models/user')
 
-exports.login = (username, password) => {
-	return new Promise((resolve, reject) => {
-		UserModel.findOne({username: username, password: password}).then((doc, err) => {
-			if (err) {
-				reject(err)
-			} else {
-				if (doc) {
-					resolve(doc)
-				} else {
-					reject('登陆失败')
-				}
-			}
-		})
-	})
+exports.login = async ctx => {
+	let username = ctx.request.body.username
+	let password = ctx.request.body.password
+	try {
+		let result = await UserModel.findOne({username, password})
+		ctx.body = {
+			msg: 'ok',
+			status: 1,
+			data: result
+		}
+	} catch (err) {
+		ctx.body = {
+			msg: 'error',
+			status: 0,
+			data: err
+		}
+	}
 }
 
-exports.signin = (username, password) => {
-	return new Promise((resolve, reject) => {
-		UserModel.findOne({username: username}).then((doc, err) => {
-			if (doc) {
-				reject('用户已存在')
-			} else {
-				let newUser = new UserModel({username: username, password: password})
-				newUser.save({username: username, password: password}).then((doc, err) => {
-					if (err) {
-						reject(err)
-					} else {
-						resolve(doc)
-					}
-				})
-			}
-		})
-	})
+exports.signin = async(ctx) => {
+	let username = ctx.request.body.username
+	let password = ctx.request.body.password
+	try {
+		let newUser = new UserModel({username, password})
+		let result = await UserModel.findOneAndUpdate({
+			username: username
+		}, newUser, {upsert: true})
+		ctx.body = {
+			msg: '注册成功',
+			status: 1,
+			data: result
+		}
+	} catch (err) {
+		ctx.body = {
+			msg: '注册失败',
+			status: 0,
+			data: null
+		}
+	}
 }

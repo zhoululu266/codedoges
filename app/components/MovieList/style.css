@@ -9,13 +9,13 @@
   position: absolute !important;
   top: 50%;
   left: 50%;
-  margin: -40px 0 0 -40px;
+  margin: -40px 0 0 -20px;
 }
 
 .movie-container {
   width: 260px;
   float: left;
-  margin: 20px
+  margin: 20px;
 }
 
 .movie-likebtn {

@@ -1,10 +1,14 @@
-import { Component } from 'react'
+import {Component} from 'react'
+import {indigoA100, indigo50} from 'material-ui/styles/colors'
 import './style.css'
 
 class Footer extends Component {
-	render( ) {
+	render() {
 		return (
-			<div className='footer'>
+			<div className='footer' style={{
+				backgroundColor: indigoA100,
+				color: indigo50
+			}}>
 				{this.props.children}
 			</div>
 		)

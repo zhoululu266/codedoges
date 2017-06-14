@@ -1,4 +1,5 @@
 import React from 'react'
+import {indigoA100} from 'material-ui/styles/colors'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import CircularProgress from 'material-ui/CircularProgress'
@@ -56,7 +57,6 @@ class FormLogin extends React.Component {
 				this.props.actions.login({username: data.data.username, password: data.data.password, uuid: data.data._id, avatar: data.data.avatar})
 				this.setState({avatar: data.data.avatar})
 				this.refs.avatarBox.style.opacity = 1
-				this.setState({loginButton: '登陆'})
 				history.push('/home')
 			} else {
 				alert(data.msg)
@@ -133,8 +133,12 @@ class FormLogin extends React.Component {
 						? <img src={this.state.avatar} alt="用户头像" ref='avatar'/>
 						: ''}
 				</div>
-				<TextField hintText='请输入用户名' fullWidth={true} onChange={this.handleChange}></TextField>
-				<TextField hintText='请输入密码' type='password' fullWidth={true} onChange={this.handleChange}></TextField>
+				<TextField floatingLabelText="用户名" floatingLabelStyle={{
+					color: indigoA100
+				}} fullWidth={true} onChange={this.handleChange}></TextField>
+				<TextField floatingLabelText="密码" floatingLabelStyle={{
+					color: indigoA100
+				}} type='password' fullWidth={true} onChange={this.handleChange}></TextField>
 				<div className='clearfixed' style={{
 					marginTop: '50px'
 				}}>

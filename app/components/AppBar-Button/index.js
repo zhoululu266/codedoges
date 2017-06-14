@@ -15,11 +15,11 @@ class AppBarBtn extends Component {
 	render() {
 		return (
 			<IconMenu iconButtonElement={< IconButton > <Menu color={grey50}/> < /IconButton>} anchorOrigin={{
-				horizontal: 'left',
-				vertical: 'top'
+				horizontal: 'middle',
+				vertical: 'center'
 			}} targetOrigin={{
-				horizontal: 'left',
-				vertical: 'top'
+				horizontal: 'middle',
+				vertical: 'center'
 			}}>
 				<MenuItem primaryText="GitHub" onClick={this.goGithub}></MenuItem>
 			</IconMenu>

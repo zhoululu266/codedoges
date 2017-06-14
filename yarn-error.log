@@ -1,14 +1,14 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js info
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js upgrade
 
 PATH: 
-  D:\app\cmder\bin;D:\app\cmder\vendor\conemu-maximus5\ConEmu\Scripts;D:\app\cmder\vendor\conemu-maximus5;D:\app\cmder\vendor\conemu-maximus5\ConEmu;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\Yarn\bin;C:\Users\49280\AppData\Local\atom;D:\app\Sublime Text 3;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\putty;D:\app\cmder;C:\Program Files\MongoDB\Server\3.4\bin;C:\Users\49280\AppData\Local\Microsoft\WindowsApps;C:\Users\49280\.babun;C:\Users\49280\AppData\Local\Yarn\bin;C:\Users\49280\AppData\Local\atom\bin;C:\Users\49280\AppData\Roaming\npm;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;D:\app\cmder\
+  C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files (x86)\Yarn\bin;C:\Users\49280\AppData\Local\atom;D:\app\Sublime Text 3;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\putty;D:\app\cmder;C:\Program Files\MongoDB\Server\3.4\bin;C:\Program Files\nodejs\;C:\Users\49280\AppData\Local\Microsoft\WindowsApps;C:\Users\49280\.babun;C:\Users\49280\AppData\Local\Yarn\bin;C:\Users\49280\AppData\Local\atom\bin;D:\app\Microsoft VS Code\bin;C:\Users\49280\AppData\Roaming\npm
 
 Yarn version: 
   0.24.5
 
 Node version: 
-  7.10.0
+  8.1.0
 
 Platform: 
   win32 x64
@@ -25,10 +25,11 @@ npm manifest:
     "scripts": {
       "dev": "webpack-dev-server --progress --config configs/dev.babel.js",
       "dev:serve": "cross-env NODE_PORT=8080 nodemon server",
-      "build": "rm dist/app.js && cross-env NODE_ENV=production webpack --progress --config configs/prod.babel.js",
+      "build": "webpack --progress --config configs/prod.babel.js",
       "serve:start": "yarn build && pm2 start server",
       "serve:stop": "pm2 stop server && rm dist/app.js"
     },
+    "website": "www.codedoges.com",
     "devDependencies": {
       "babel-core": "^6.24.1",
       "babel-env": "^2.4.1",
@@ -5380,7 +5381,4 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: connect ETIMEDOUT 104.16.59.173:443
-      at Object.exports._errnoException (util.js:1050:11)
-      at exports._exceptionWithHostPort (util.js:1073:20)
-      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1093:14)
+  Error: EPERM: operation not permitted, unlink 'E:\workspace\codedoges\node_modules\material-ui\ReactFragment\ReactFragment.js'

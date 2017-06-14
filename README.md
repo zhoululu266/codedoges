@@ -11,4 +11,4 @@ yarn dev
 yarn dev:serve
 ```
 
-浏览器打开localhost即可。
+执行以上命令后会自动开启浏览器并访问`http://localhost`，关闭浏览器后想再次查看，访问 http://localhost 即可。
