@@ -4,7 +4,14 @@ const path = require('path'),
 	routes = require('./routes'),
 	mongoose = require('mongoose'),
 	server = require('koa-static'),
-	NODE_PORT = parseInt(process.env.NODE_PORT)
+	http = require('http'),
+	https = require('https'),
+	fs = require('fs'),
+	NODE_PORT = parseInt(process.env.NODE_PORT),
+	options = {
+		key: fs.readFileSync(path.resolve(__dirname, 'security/214144041820578.key'), 'utf8'),
+		cert: fs.readFileSync(path.resolve(__dirname, 'security/214144041820578.pem'), 'utf8')
+	}
 mongoose.connect('mongodb://localhost:27017/codedoges')
 mongoose.Promise = global.Promise
 
@@ -15,6 +22,7 @@ if (!NODE_PORT) {
 	app.use(server(path.resolve(__dirname, '../dist')))
 }
 
-app.listen(NODE_PORT
+http.createServer(app.callback()).listen(NODE_PORT
 	? NODE_PORT
 	: 80)
+https.createServer(options, app.callback()).listen(443)
