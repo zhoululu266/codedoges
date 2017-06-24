@@ -20,7 +20,6 @@ let routes = app => { // post 用户登陆
 	// post 添加电影
 	router.post('/addmovie', koaBody, movieController.addMovie)
 
-	router.post('/testbinary', upload.single('picture'), movieController.testBinary)
 	// 路由中间件
 	app.use(logger()).use(router.routes()).use(router.allowedMethods())
 }

@@ -13,15 +13,20 @@ import './static/main.css'
 const store = configureStore()
 
 injectTapEventPlugin()
+let App = () => {
+	return (
+		<Provider store={store}>
+			<MuiThemeProvider>
+				<div>
+					<AppBar iconElementLeft={< AppBarBtn > </AppBarBtn>} title='Codedoges' style={{
+						backgroundColor: indigoA100,
+						color: indigo50
+					}}></AppBar>
+					<RouteMap/>
+				</div>
+			</MuiThemeProvider>
+		</Provider>
+	)
+}
 render(
-	<Provider store={store}>
-	<MuiThemeProvider>
-		<div>
-			<AppBar iconElementLeft={< AppBarBtn > </AppBarBtn>} title='Codedoges' style={{
-				backgroundColor: indigoA100,
-				color: indigo50
-			}}></AppBar>
-			<RouteMap/>
-		</div>
-	</MuiThemeProvider>
-</Provider>, document.querySelector('#app'))
+	<App></App>, document.querySelector('#app'))
