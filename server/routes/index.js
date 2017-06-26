@@ -1,13 +1,13 @@
-let userController = require('../controllers/user')
-let movieController = require('../controllers/movie')
-let koaBody = require('koa-body')({multipart: true})
-let router = require('koa-router')({prefix: '/api'})
-let multer = require('koa-multer')
-let path = require('path')
-let upload = multer({
-	dest: path.resolve(__dirname, '../data/test')
-})
-let logger = require('koa-logger')
+let userController = require('../controllers/user'),
+	movieController = require('../controllers/movie'),
+	koaBody = require('koa-body')({multipart: true}),
+	router = require('koa-router')({prefix: '/api'}),
+	multer = require('koa-multer'),
+	path = require('path'),
+	upload = multer({
+		dest: path.resolve(__dirname, '../data/test')
+	}),
+	logger = require('koa-logger')
 
 let routes = app => { // post 用户登陆
 	router.post('/login', koaBody, userController.login)
@@ -20,7 +20,6 @@ let routes = app => { // post 用户登陆
 	// post 添加电影
 	router.post('/addmovie', koaBody, movieController.addMovie)
 
-	router.post('/testbinary', upload.single('picture'), movieController.testBinary)
 	// 路由中间件
 	app.use(logger()).use(router.routes()).use(router.allowedMethods())
 }

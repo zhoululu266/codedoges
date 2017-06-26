@@ -19,6 +19,7 @@ class MovieList extends Component {
 		this.state = {
 			movies: ''
 		}
+		this.goMovieDetail = this.goMovieDetail.bind(this)
 	}
 	componentDidMount() {
 		// 获取豆瓣电影top250
@@ -37,6 +38,9 @@ class MovieList extends Component {
 		}).catch(err => {
 			alert(err)
 		});
+	}
+	goMovieDetail(movie) {
+		let movieId = movie.id
 	}
 	render() {
 		return (
@@ -61,8 +65,10 @@ class MovieList extends Component {
 								导演：{movie.directors[0].name}
 							</CardText>
 							<CardActions className='clearfixed'>
-								<RaisedButton label="评分" style={{
+								<RaisedButton label="查看" style={{
 									float: 'left'
+								}} onClick={(e) => {
+									this.goMovieDetail(movie)
 								}}/>
 								<RaisedButton label="点赞" secondary={true} className='movie-likebtn'/>
 							</CardActions>

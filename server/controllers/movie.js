@@ -1,4 +1,4 @@
-const MovieModel = require('../models/movie')
+const Movie = require('../models/movie')
 let axios = require('axios')
 let doubanApi = 'https://api.douban.com/v2'
 /**
@@ -22,12 +22,14 @@ exports.doubantop250 = async ctx => {
 			status: 1,
 			data: result.data
 		}
+		console.log(ctx.body)
 	} catch (err) {
 		ctx.body = {
 			msg: '获取豆瓣电影top250失败',
 			status: 0,
 			data: null
 		}
+		console.log(ctx.body)
 	}
 }
 
@@ -39,7 +41,7 @@ exports.doubantop250 = async ctx => {
  */
 exports.getMovielist = async ctx => {
 	try {
-		let result = await MovieModel.find()
+		let result = await Movie.find()
 		ctx.body = {
 			msg: '获取电影列表成功',
 			status: 1,
@@ -63,8 +65,8 @@ exports.getMovielist = async ctx => {
 exports.addMovie = async ctx => {
 	try {
 		let moviename = ctx.request.body.moviename
-		let newMovie = new MovieModel(ctx.request.body)
-		let result = await MovieModel.findOneAndUpdate({
+		let newMovie = new Movie(ctx.request.body)
+		let result = await Movie.findOneAndUpdate({
 			moviename: moviename
 		}, newMovie, {upsert: true})
 		ctx.body = {
@@ -72,16 +74,13 @@ exports.addMovie = async ctx => {
 			status: 1,
 			data: result
 		}
+		console.log(ctx.body)
 	} catch (err) {
 		ctx.body = {
 			msg: '添加电影失败',
 			status: 0,
 			data: null
 		}
+		console.log(ctx.body)
 	}
-}
-
-exports.testBinary = async ctx => {
-	ctx.req.file.filename = 'avatar.jpg'
-	console.log(ctx.req.file)
 }

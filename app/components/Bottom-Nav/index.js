@@ -22,11 +22,11 @@ class BottomNav extends Component {
 	render() {
 		return (
 			<div>
-				<Paper zDepth={1}>
+				<Paper className="bottom-nav" zDepth={1}>
 					<BottomNavigation selectedIndex={this.state.selectIndex}>
-						<BottomNavigationItem label="豆瓣电影TOP250" icon={contactsIcon} onTouchTap={() => this.handleIndex(0)}></BottomNavigationItem>
-						<BottomNavigationItem label="豆瓣电影TOP250" icon={homeIcon} onTouchTap={() => this.handleIndex(1)}></BottomNavigationItem>
-						<BottomNavigationItem label="豆瓣电影TOP250" icon={buildIcon} onTouchTap={() => this.handleIndex(2)}></BottomNavigationItem>
+						<BottomNavigationItem label="用户" icon={contactsIcon} onTouchTap={() => this.handleIndex(0)}></BottomNavigationItem>
+						<BottomNavigationItem label="TOP250" icon={homeIcon} onTouchTap={() => this.handleIndex(1)}></BottomNavigationItem>
+						<BottomNavigationItem label="设置" icon={buildIcon} onTouchTap={() => this.handleIndex(2)}></BottomNavigationItem>
 					</BottomNavigation>
 				</Paper>
 			</div>
