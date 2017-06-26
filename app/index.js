@@ -30,3 +30,6 @@ let App = () => {
 }
 render(
 	<App></App>, document.querySelector('#app'))
+if(module.hot) {
+	console.dir(module.hot.accept)
+}
