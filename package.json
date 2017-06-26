@@ -8,7 +8,7 @@
   "license": "MIT",
   "website": "https://codedoges.com",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev nodemon configs/dev.babel.js --exec babel-node",
+    "dev": "cross-env NODE_ENV=dev nodemon build/dev.js --exec babel-node",
     "dev:serve": "cross-env NODE_ENV=dev nodemon server --exec babel-node",
     "build": "babel-node build/prod.js",
     "serve:start": "yarn build && pm2 start server",
