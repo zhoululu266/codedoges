@@ -24,4 +24,4 @@ let routes = app => { // post 用户登陆
 	app.use(logger()).use(router.routes()).use(router.allowedMethods())
 }
 
-module.exports = routes
+export default routes

@@ -5,8 +5,7 @@ import path from 'path'
 import koa from 'koa'
 import routes from './routes'
 import mongoose from 'mongoose'
-const NODE_PORT = parseInt(process.env.NODE_PORT),
-	NODE_ENV = process.env.NODE_ENV,
+const NODE_ENV = process.env.NODE_ENV,
 	app = new koa(),
 	options = {
 		key: fs.readFileSync(path.resolve(__dirname, 'security/214144041820578.key'), 'utf8'),
@@ -17,7 +16,5 @@ mongoose.Promise = global.Promise
 
 routes(app)
 
-http.createServer(app.callback()).listen(NODE_PORT
-	? NODE_PORT
-	: 80)
+http.createServer(app.callback()).listen(80)
 https.createServer(options, app.callback()).listen(443)
