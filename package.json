@@ -6,6 +6,7 @@
   "repository": "https://github.com/galaxycubic/codedoges.git",
   "author": "shikun <492809110@qq.com>",
   "license": "MIT",
+  "website": "https://codedoges.com",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev nodemon configs/dev.babel.js --exec babel-node",
     "dev:serve": "cross-env NODE_ENV=dev NODE_PORT=8080 nodemon server --exec babel-node",
@@ -13,11 +14,6 @@
     "serve:start": "yarn build && pm2 start server",
     "serve:stop": "pm2 stop server && rm dist/app.js"
   },
-<<<<<<< HEAD
-  "website": "https://www.codedoges.com",
-=======
-  "website": "https://codedoges.com",
->>>>>>> 2c20f82fb0740664c07f3c898daf2cc428c91da0
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
