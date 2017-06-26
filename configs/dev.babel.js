@@ -6,19 +6,6 @@ export default {
 	output : {
 		filename: 'dist/app.js'
 	},
-	devServer : {
-		inline: true,
-		hot: true,
-		port: 80,
-		host: '0.0.0.0',
-		proxy: {
-			'/api/*': {
-				target: 'http://localhost:8080',
-				changeOrigin: true,
-				secure: true
-			}
-		}
-	},
 	module : {
 		rules: [
 			{
