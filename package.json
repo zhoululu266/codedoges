@@ -13,7 +13,7 @@
     "serve:start": "yarn build && pm2 start server",
     "serve:stop": "pm2 stop server && rm dist/app.js"
   },
-  "website": "www.codedoges.com",
+  "website": "https://www.codedoges.com",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-env": "^2.4.1",
@@ -33,11 +33,9 @@
     "koa-router": "^7.2.0",
     "koa-static": "^3.0.0",
     "mongoose": "^4.9.9",
-    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "open-browser-webpack-plugin": "^0.0.5",
     "pm2": "^2.4.6",
-    "sass-loader": "^6.0.5",
     "style-loader": "^0.17.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.5.1",
