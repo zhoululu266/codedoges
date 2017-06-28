@@ -6,8 +6,13 @@ export default {
 	entry : path.resolve(__dirname, '../app/index.js'),
 	output : {
 		filename: 'app[hash].js',
-		path: path.resolve(__dirname)
+		path: path.resolve(__dirname,'../dist')
 	},
+	devServer: {
+		contentBase: path.resolve(__dirname,'../dist')
+		hot: true,
+		inline:true
+	}
 	module : {
 		rules: [
 			{
