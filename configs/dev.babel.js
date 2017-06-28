@@ -1,10 +1,12 @@
 import path from 'path'
 import webpack from 'webpack'
 import openBrowserPlugin from 'open-browser-webpack-plugin'
+import htmlWebpckPlugin from 'html-webpack-plugin'
 export default {
-	entry : path.resolve(__dirname, '../app/index'),
+	entry : path.resolve(__dirname, '../app/index.js'),
 	output : {
-		filename: 'dist/app.js'
+		filename: 'app[hash].js',
+		path: path.resolve(__dirname)
 	},
 	module : {
 		rules: [
@@ -45,6 +47,11 @@ export default {
 		//热加载模块替换
 		new webpack.HotModuleReplacementPlugin(),
 		//打包完成后自动打开浏览器
-		new openBrowserPlugin({url: 'http://localhost/dist'})
+		new openBrowserPlugin({url: 'http://localhost'}),
+		new htmlWebpckPlugin({
+			inject: true,
+			filename: 'index.html',
+			template: path.resolve(__dirname, '../index.html')
+		})
 	]
 }

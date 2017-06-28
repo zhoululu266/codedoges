@@ -3,7 +3,7 @@ import webpack from 'webpack'
 export default {
 	entry : path.resolve(__dirname, '../app/index'),
 	output : {
-		filename: 'dist/app.js'
+		filename: 'app.[hash:5].js'
 	},
 	module : {
 		rules: [
