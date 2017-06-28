@@ -45,6 +45,6 @@ export default {
 		//热加载模块替换
 		new webpack.HotModuleReplacementPlugin(),
 		//打包完成后自动打开浏览器
-		new openBrowserPlugin({url: 'http://localhost/dist'})
+		new openBrowserPlugin({url: 'http://localhost'})
 	]
 }
