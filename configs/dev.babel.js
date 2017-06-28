@@ -47,15 +47,11 @@ export default {
 		//热加载模块替换
 		new webpack.HotModuleReplacementPlugin(),
 		//打包完成后自动打开浏览器
-<<<<<<< HEAD
-		new openBrowserPlugin({url: 'http://localhost'})
-=======
 		new openBrowserPlugin({url: 'http://localhost'}),
 		new htmlWebpckPlugin({
 			inject: true,
 			filename: 'index.html',
 			template: path.resolve(__dirname, '../index.html')
 		})
->>>>>>> 1fe326f69a3cfdb0b0508297d35050bcbaeb2e53
 	]
 }
