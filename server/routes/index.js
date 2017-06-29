@@ -1,24 +1,25 @@
-let userController = require('../controllers/user'),
-	movieController = require('../controllers/movie'),
-	koaBody = require('koa-body')({multipart: true}),
-	router = require('koa-router')({prefix: '/api'}),
-	multer = require('koa-multer'),
-	path = require('path'),
+import userController from '../controllers/user'
+import movieController from '../controllers/movie'
+import koaBody from 'koa-body'
+import koaRouter from 'koa-router'
+import multer from 'koa-multer'
+import path from 'path'
+import logger from 'koa-logger'
+let router = new koaRouter({prefix: '/api'}),
+	bodyParser = new koaBody({multipart: true}),
 	upload = multer({
 		dest: path.resolve(__dirname, '../data/test')
-	}),
-	logger = require('koa-logger')
-
+	})
 let routes = app => { // post 用户登陆
-	router.post('/login', koaBody, userController.login)
+	router.post('/login', bodyParser, userController.login)
 	// post 用户注册
-	router.post('/signin', koaBody, userController.signin)
+	router.post('/signin', bodyParser, userController.signin)
 	// get 获取电影列表
 	router.get('/movielist', movieController.getMovielist)
 	// get 豆瓣电影api TOP250 list
-	router.get('/doubantop250', koaBody, movieController.doubantop250)
+	router.get('/doubantop250', bodyParser, movieController.doubantop250)
 	// post 添加电影
-	router.post('/addmovie', koaBody, movieController.addMovie)
+	router.post('/addmovie', bodyParser, movieController.addMovie)
 
 	// 路由中间件
 	app.use(logger()).use(router.routes()).use(router.allowedMethods())
