@@ -12,7 +12,7 @@ export default {
 				loader: 'babel-loader'
 			}, {
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
+				use: ['style-loader', 'postcss-loader','css-loader']
 			}, {
 				test: /\.(jpg|png)/,
 				use: ['url-loader?limit=10000', 'file-loader']
