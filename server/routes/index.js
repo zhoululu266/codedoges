@@ -44,7 +44,8 @@ let routes = app => {
 	router.post('/addmovie', bodyParser, movieController.addMovie)
 
 	router.get('/test', ctx => {
-		ctx.session.name = 'test'
+		console.log(ctx.session.isNew)
+		ctx.session.name = 'newSession'
 		ctx.body = 'test'
 	})
 
