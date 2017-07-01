@@ -1,9 +1,11 @@
 import path from 'path'
 import webpack from 'webpack'
+import htmlWebpackPlugin from 'html-webpack-plugin'
 export default {
 	entry : path.resolve(__dirname, '../app/index'),
 	output : {
-		filename: 'app.[hash:5].js'
+		filename: 'app.[hash:5].js',
+		path: path.resolve(__dirname, '../dist')
 	},
 	module : {
 		rules: [
@@ -54,6 +56,11 @@ export default {
 				NODE_ENV: '"production"'
 			}
 		}),
-		new webpack.optimize.UglifyJsPlugin()
+		new webpack.optimize.UglifyJsPlugin(),
+		new htmlWebpackPlugin({
+			filename: 'index.html',
+			template: path.resolve(__dirname, '../index.html'),
+			inject: true
+		})
 	]
 }
